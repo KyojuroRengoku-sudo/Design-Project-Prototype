@@ -1,21 +1,19 @@
-<!-- landing_page.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CareMatch · Smart Hospital Finder</title>
+  <title>CareMatch · Smart Hospital Finder | Promos & Info Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="landing_page.css">
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-  <!-- NAVBAR (enhanced with login/account button) -->
+  <!-- NAVBAR -->
   <div class="navbar">
     <div class="logo">
       <div class="heart"></div>
-      <span>Nurturing Care at Every Stage</span>
+      <span>CareMatch · Smart Compass</span>
     </div>
     <div class="nav-links">
       <a href="#" class="active" id="navHome">Home</a>
@@ -29,69 +27,73 @@
   <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-text">
-      <p>Smart Systems for Better Healthcare Delivery</p>
-      <h1>
-        <span>Healthcare &</span><br>
-        Product Management System
-      </h1>
-      <div class="hero-cta">
-        <button class="btn-primary" id="scrollToHospitals">Find Your Best Hospital <i class="fas fa-arrow-right"></i></button>
-      </div>
+      <p>✨ Smart comparisons · Live promos & availability</p>
+      <h1><span>Healthcare &</span><br>Product Management System</h1>
+      <button class="btn-primary" id="scrollToHospitals">Explore hospital offers <i class="fas fa-arrow-right"></i></button>
     </div>
-    <!-- Decorative Shapes -->
     <div class="shape shape1"></div>
     <div class="shape shape2"></div>
     <div class="shape shape3"></div>
     <div class="shape shape4"></div>
   </section>
 
-  <!-- MAIN CONTENT: Promos + Hospitals + Bed Availability -->
+  <!-- MAIN CONTENT -->
   <div class="content-wrapper">
-    <!-- Promo carousel / banners -->
+    <!-- Promo carousel -->
     <div class="promo-highlight">
-      <div class="promo-badge"><i class="fas fa-tags"></i> Hot Promos & Offers</div>
+      <div class="promo-badge"><i class="fas fa-fire"></i> Limited-time medical offers</div>
       <div class="promo-slider" id="promoSlider">
-        <div class="promo-slide">🏥 City Hospital: 20% OFF on full body checkup + Free consultation</div>
-        <div class="promo-slide">💙 MedLife: Zero registration fee & 15% off on maternity packages</div>
+        <div class="promo-slide">🏥 City Hospital: 20% OFF full body checkup + FREE dental screening</div>
+        <div class="promo-slide">💙 MedLife: Zero registration fee & 15% off maternity packages</div>
         <div class="promo-slide">🩺 St. Claire's: Buy 1 Health Package, Get 1 Dental Checkup Free</div>
         <div class="promo-slide">⭐ Grace Medical: Weekend discounts up to 30% on OPD services</div>
       </div>
     </div>
 
+    <!-- DISCLAIMER: NOT A BOOKING SYSTEM (clearly highlighted) -->
+    <div class="info-disclaimer">
+      <i class="fas fa-info-circle"></i>
+      <div class="disclaimer-text">
+        <strong>⚠️ Informational platform only — not a booking system.</strong> Bed availability and promotions are shown for guidance & comparison. Please contact hospitals directly to confirm real-time availability and appointments.
+      </div>
+      <i class="fas fa-shield-alt"></i>
+    </div>
+
     <!-- Hospitals Grid Section -->
     <div class="section-header">
-      <h2><i class="fas fa-hospital"></i> Hospitals near you – Live bed availability & promos</h2>
-      <p>Compare, save favorites & choose the best fit</p>
+      <h2><i class="fas fa-hospital-user"></i> Hospitals near you – 🎯 live promos highlighted</h2>
+      <p>Compare exclusive offers & bed status (indicative only)</p>
     </div>
     <div class="hospital-grid" id="hospitalGrid"></div>
 
-    <!-- Favorite Hospitals Section (visible only when logged in) -->
+    <!-- Favorite Hospitals Section (logged in only) -->
     <div id="favoriteSection" class="favorite-section" style="display: none;">
       <div class="section-header">
-        <h2><i class="fas fa-heart" style="color:#3b5bbb;"></i> Your Saved Hospitals</h2>
-        <p>Hospitals you've marked as favorite</p>
+        <h2><i class="fas fa-heart" style="color:#dc2626;"></i> Your saved hospitals & offers</h2>
+        <p>Personalized watchlist — track promos you love</p>
       </div>
       <div class="fav-grid" id="favGrid"></div>
     </div>
   </div>
 
-  <!-- ACCOUNT DASHBOARD PANEL (hidden by default) -->
+  <!-- DASHBOARD PANEL -->
   <div id="dashboardPanel" class="dashboard-modal" style="display: none;">
     <div class="dashboard-card">
       <div class="dashboard-header">
-        <i class="fas fa-user-circle fa-3x"></i>
+        <i class="fas fa-user-circle fa-3x" style="color:#3b5bbb;"></i>
         <h3 id="dashboardUsername">Guest</h3>
         <button id="closeDashboardBtn" class="close-dash"><i class="fas fa-times"></i></button>
       </div>
       <div class="dashboard-stats">
-        <p><i class="fas fa-heart"></i> <span id="favCountDashboard">0</span> favorite hospitals</p>
-        <p><i class="fas fa-bell"></i> Promo notifications enabled</p>
+        <p><i class="fas fa-heart" style="color:#e53e3e;"></i> <span id="favCountDashboard">0</span> favorite hospitals</p>
+        <p><i class="fas fa-bell"></i> Promo alerts: enabled</p>
+        <p style="font-size:12px; margin-top:8px;"><i class="fas fa-info-circle"></i> No bookings, just info</p>
       </div>
       <button id="logoutDashboardBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
     </div>
   </div>
 
-  <!-- MODAL: LOGIN / REGISTER (personal account) -->
+  <!-- AUTH MODAL -->
   <div id="authModal" class="modal">
     <div class="modal-content">
       <span class="close-modal">&times;</span>
@@ -99,19 +101,17 @@
         <button class="tab-btn active" id="loginTabBtn">Login</button>
         <button class="tab-btn" id="registerTabBtn">Register</button>
       </div>
-      <!-- Login Form -->
       <form id="loginForm" class="auth-form">
         <h3>Welcome back</h3>
-        <input type="text" id="loginUsername" placeholder="Username" required>
-        <input type="password" id="loginPassword" placeholder="Password" required>
+        <input type="text" id="loginUsername" placeholder="Username" autocomplete="off">
+        <input type="password" id="loginPassword" placeholder="Password">
         <button type="submit">Login <i class="fas fa-arrow-right"></i></button>
-        <small class="demo-hint">Demo: any username/password (min 3 chars) – creates account automatically</small>
+        <small class="demo-hint">Demo: any username/password (≥3 chars) auto-creates account.</small>
       </form>
-      <!-- Register Form -->
       <form id="registerForm" class="auth-form" style="display: none;">
         <h3>Create personal account</h3>
-        <input type="text" id="regUsername" placeholder="Username" required>
-        <input type="password" id="regPassword" placeholder="Password" required>
+        <input type="text" id="regUsername" placeholder="Username">
+        <input type="password" id="regPassword" placeholder="Password">
         <button type="submit">Register & Login</button>
       </form>
     </div>

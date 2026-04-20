@@ -6,7 +6,7 @@ const hospitalsData = [
   { id: 3, name: "St. Claire's Memorial", location: "Northridge", beds: 8, totalBeds: 60, promo: "Buy 1 Health Package, Get 1 Dental Checkup Free", availText: "Limited beds" },
   { id: 4, name: "Grace Medical Center", location: "Eastbrook", beds: 55, totalBeds: 140, promo: "Weekend discounts 30% on OPD + free medicine delivery", availText: "Excellent" },
   { id: 5, name: "Hope Children's & Women's", location: "South Park", beds: 12, totalBeds: 50, promo: "Zero registration fee & 25% off on pediatric care", availText: "Few left" },
-  { id: 6, name: "Greenlife Heart Institute", location: "Riverside", beds: 27, totalBeds: 95, promo: "Cardiac package: 15% off + free ECG", availText: "Good" }
+  { id: 6, name: "Greenlife Heart Institute", location: "Riverside", beds: 27, totalBeds: 95, promo: "Cardiac package: 15% off + free ECG & consultation", availText: "Good" }
 ];
 
 // Helper: bed percentage & color
@@ -71,7 +71,8 @@ function logout() {
   saveSession();
   updateAuthUI();
   closeDashboard();
-  renderHospitals(); // refresh fav icons
+  renderHospitals();
+  renderFavorites();
   toggleFavoriteSection();
 }
 
@@ -110,7 +111,7 @@ function isFavorite(hospitalId) {
   return currentUser && currentUser.favorites.includes(hospitalId);
 }
 
-// Render all hospitals
+// Render all hospitals with PROMO HIGHLIGHT (badge + icon)
 function renderHospitals() {
   const grid = document.getElementById("hospitalGrid");
   if (!grid) return;
@@ -126,8 +127,12 @@ function renderHospitals() {
         <div class="location"><i class="fas fa-map-marker-alt"></i> ${hospital.location}</div>
         <div class="bed-status">
           <span class="${bedInfo.class}"><i class="fas fa-bed"></i> ${bedInfo.text}</span>
+          <small style="font-size:11px; opacity:0.7;">(indicative)</small>
         </div>
-        <div class="promo-tag"><i class="fas fa-tag"></i> ${hospital.promo}</div>
+        <div class="promo-tag">
+          <span class="promo-badge-label"><i class="fas fa-gift"></i> HOT OFFER</span>
+          <span class="promo-text-highlight">✨ ${hospital.promo}</span>
+        </div>
         <small>Total beds: ${hospital.totalBeds} | Available: ${hospital.beds}</small>
       </div>
     `;
@@ -169,7 +174,10 @@ function renderFavorites() {
         <div class="hospital-name">${hospital.name}</div>
         <div class="location"><i class="fas fa-map-marker-alt"></i> ${hospital.location}</div>
         <div class="bed-status"><span class="${bedInfo.class}">${bedInfo.text}</span></div>
-        <div class="promo-tag">🎁 ${hospital.promo}</div>
+        <div class="promo-tag">
+          <span class="promo-badge-label"><i class="fas fa-fire"></i> PROMO</span>
+          <span>🎯 ${hospital.promo}</span>
+        </div>
         <button class="remove-fav-btn" data-id="${hospital.id}" style="margin-top:12px; background:#fee2e2; border:none; padding:6px 12px; border-radius:40px; cursor:pointer;">Remove from favorites</button>
       </div>
     `;
@@ -287,7 +295,14 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("scrollToHospitals")?.addEventListener("click", () => {
     document.querySelector(".hospital-grid")?.scrollIntoView({ behavior: "smooth" });
   });
-  // About/Contact dummy
-  document.getElementById("navAbout")?.addEventListener("click", (e) => { e.preventDefault(); alert("CareMatch helps you find best hospital with promos & bed availability. Contact: support@carematch.com"); });
-  document.getElementById("navContact")?.addEventListener("click", (e) => { e.preventDefault(); alert("📞 +1 (555) 789-2345 | care@carematch.com"); });
+  
+  // Updated About/Contact alerts to clarify no bookings
+  document.getElementById("navAbout")?.addEventListener("click", (e) => { 
+    e.preventDefault(); 
+    alert("CareMatch is an informational platform to help you discover hospital promotions and bed availability. No direct bookings — please contact hospitals directly for appointments."); 
+  });
+  document.getElementById("navContact")?.addEventListener("click", (e) => { 
+    e.preventDefault(); 
+    alert("📞 +1 (555) 789-2345 | care@carematch.com\n\nThis is not a booking service. For emergencies, please call your local emergency number."); 
+  });
 });
