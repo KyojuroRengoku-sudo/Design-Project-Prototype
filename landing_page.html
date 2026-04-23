@@ -2,121 +2,208 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CareMatch · Smart Hospital Finder | Promos & Info Hub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>CareMatch · Hospital Promos & Bed Availability (No Bookings)</title>
   <link rel="stylesheet" href="landing_page.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <div class="navbar">
-    <div class="logo">
-      <div class="heart"></div>
-      <span>CareMatch · Smart Compass</span>
+<!-- STICKY TOP BANNER -->
+<div class="sticky-promo-banner" id="stickyBanner">
+  <div class="banner-content">
+    <i class="fas fa-bolt"></i> 
+    <span><strong>⚡ FLASH SALE:</strong> 20% OFF full checkups – <span id="bannerCountdown">01:23:45</span> left!</span>
+    <button class="claim-btn-sm" data-offer="Flash Sale: 20% OFF checkups">Claim Offer →</button>
+    <i class="fas fa-times-circle close-banner" id="closeBanner"></i>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">
+    <div class="heart"></div>
+    <span>CareMatch · Promo Hub</span>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#" class="active" id="navHome">Home</a>
+    <a href="#" id="navPromos">All Promos</a>
+    <a href="#" id="navAbout">About</a>
+    <a href="#" id="navContact">Contact</a>
+    <a href="#" id="authNavBtn" class="auth-trigger">Login / Register</a>
+    <a href="#" id="accountDashboardBtn" style="display: none;">My Account</a>
+  </div>
+</div>
+
+<!-- HERO SECTION (no "Limited Time Offer" badge) -->
+<section class="hero">
+  <div class="hero-text">
+    <h1><span>Up to 30% OFF</span><br>Maternity Packages</h1>
+    <p>Plus free teleconsultation. Valid until April 30.</p>
+    <div class="countdown-wrapper">
+      <div class="countdown-box"><span id="days">00</span><label>Days</label></div>
+      <div class="countdown-box"><span id="hours">00</span><label>Hours</label></div>
+      <div class="countdown-box"><span id="minutes">00</span><label>Minutes</label></div>
+      <div class="countdown-box"><span id="seconds">00</span><label>Seconds</label></div>
     </div>
-    <div class="nav-links">
-      <a href="#" class="active" id="navHome">Home</a>
-      <a href="#" id="navAbout">About us</a>
-      <a href="#" id="navContact">Contact Us</a>
-      <a href="#" id="authNavBtn" class="auth-trigger">Login / Register</a>
-      <a href="#" id="accountDashboardBtn" style="display: none;">My Account</a>
+    <div class="scarcity-badge"><i class="fas fa-users"></i> Only <strong>12 packages left</strong> at this price!</div>
+    <button class="btn-primary claim-hero" data-offer="30% OFF Maternity Packages + free teleconsultation">Claim Promo →</button>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop" alt="Maternity care" class="hero-img">
+  </div>
+  <div class="shape shape1"></div>
+  <div class="shape shape2"></div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="content-wrapper">
+  <!-- HOT DEALS CAROUSEL (with images & auto-next every 3s) -->
+  <div class="hot-deals-carousel">
+    <div class="promo-badge"><i class="fas fa-fire"></i> 🔥 HOT DEALS – Limited slots</div>
+    <div class="carousel-container">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide" data-offer="City Hospital: 20% OFF checkup + free dental">
+          <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=400&h=250&fit=crop" alt="City Hospital">
+          <div class="slide-content">
+            <h4>City Central Hospital</h4>
+            <p>20% OFF full body checkup + FREE dental screening</p>
+            <span class="urgency">⏰ Ends tonight</span>
+          </div>
+        </div>
+        <div class="carousel-slide" data-offer="MedLife: Zero registration fee + 15% off maternity">
+          <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=250&fit=crop" alt="MedLife">
+          <div class="slide-content">
+            <h4>MedLife Super Specialty</h4>
+            <p>Zero registration fee & 15% off maternity</p>
+            <span class="urgency">🔥 Only 10 left</span>
+          </div>
+        </div>
+        <div class="carousel-slide" data-offer="St. Claire's: Buy 1 Get 1 Dental">
+          <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=400&h=250&fit=crop" alt="St. Claire's">
+          <div class="slide-content">
+            <h4>St. Claire's Memorial</h4>
+            <p>Buy 1 Health Package, Get 1 Dental Checkup Free</p>
+            <span class="urgency">🎯 Limited</span>
+          </div>
+        </div>
+        <div class="carousel-slide" data-offer="Grace Medical: 30% off OPD weekend">
+          <img src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=400&h=250&fit=crop" alt="Grace Medical">
+          <div class="slide-content">
+            <h4>Grace Medical Center</h4>
+            <p>Weekend discounts up to 30% on OPD services</p>
+            <span class="urgency">⚡ Ends Sunday</span>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+
+  <!-- Search & Filter -->
+  <div class="search-filter-bar">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search by hospital name or location...">
+    </div>
+    <select id="filterPromo" class="filter-select">
+      <option value="all">All promos</option>
+      <option value="discount">Discount offers</option>
+      <option value="free">Free services</option>
+      <option value="bogo">BOGO deals</option>
+    </select>
+  </div>
+
+  <!-- Hospitals Grid -->
+  <div class="section-header">
+    <h2><i class="fas fa-hospital-user"></i> Hospitals near you – live promos & bed availability</h2>
+    <p>Compare exclusive offers & bed status (indicative only – call to confirm)</p>
+  </div>
+  <div class="hospital-grid" id="hospitalGrid">
+    <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+  </div>
+
+  <!-- Mid-scroll promo -->
+  <div id="midScrollPromo" class="mid-scroll-promo" style="display: none;">
+    <div class="promo-card-insert">
+      <div class="insert-icon"><i class="fas fa-percent"></i></div>
+      <div class="insert-text">
+        <span class="insert-title">⭐ WEEKEND FLASH ⭐</span>
+        <span class="insert-desc">30% OFF all OPD consultations + free medicine delivery</span>
+        <span class="insert-urgency">⏰ Only 5 hours left!</span>
+      </div>
+      <button class="insert-claim" data-offer="Weekend Flash: 30% OFF OPD + free medicine delivery">Claim Now →</button>
     </div>
   </div>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-text">
-      <p>✨ Smart comparisons · Live promos & availability</p>
-      <h1><span>Healthcare &</span><br>Product Management System</h1>
-      <button class="btn-primary" id="scrollToHospitals">Explore hospital offers <i class="fas fa-arrow-right"></i></button>
-    </div>
-    <div class="shape shape1"></div>
-    <div class="shape shape2"></div>
-    <div class="shape shape3"></div>
-    <div class="shape shape4"></div>
-  </section>
-
-  <!-- MAIN CONTENT -->
-  <div class="content-wrapper">
-    <!-- Promo carousel -->
-    <div class="promo-highlight">
-      <div class="promo-badge"><i class="fas fa-fire"></i> Limited-time medical offers</div>
-      <div class="promo-slider" id="promoSlider">
-        <div class="promo-slide">🏥 City Hospital: 20% OFF full body checkup + FREE dental screening</div>
-        <div class="promo-slide">💙 MedLife: Zero registration fee & 15% off maternity packages</div>
-        <div class="promo-slide">🩺 St. Claire's: Buy 1 Health Package, Get 1 Dental Checkup Free</div>
-        <div class="promo-slide">⭐ Grace Medical: Weekend discounts up to 30% on OPD services</div>
-      </div>
-    </div>
-
-    <!-- DISCLAIMER: NOT A BOOKING SYSTEM (clearly highlighted) -->
-    <div class="info-disclaimer">
-      <i class="fas fa-info-circle"></i>
-      <div class="disclaimer-text">
-        <strong>⚠️ Informational platform only — not a booking system.</strong> Bed availability and promotions are shown for guidance & comparison. Please contact hospitals directly to confirm real-time availability and appointments.
-      </div>
-      <i class="fas fa-shield-alt"></i>
-    </div>
-
-    <!-- Hospitals Grid Section -->
+  <!-- All Promos Section -->
+  <div id="allPromosSection" class="all-promos-section" style="display: none;">
     <div class="section-header">
-      <h2><i class="fas fa-hospital-user"></i> Hospitals near you – 🎯 live promos highlighted</h2>
-      <p>Compare exclusive offers & bed status (indicative only)</p>
+      <h2><i class="fas fa-tags"></i> All Hospital Promos</h2>
+      <p>Click any offer to get contact info</p>
     </div>
-    <div class="hospital-grid" id="hospitalGrid"></div>
-
-    <!-- Favorite Hospitals Section (logged in only) -->
-    <div id="favoriteSection" class="favorite-section" style="display: none;">
-      <div class="section-header">
-        <h2><i class="fas fa-heart" style="color:#dc2626;"></i> Your saved hospitals & offers</h2>
-        <p>Personalized watchlist — track promos you love</p>
-      </div>
-      <div class="fav-grid" id="favGrid"></div>
-    </div>
+    <div class="promos-grid" id="promosGrid"></div>
   </div>
 
-  <!-- DASHBOARD PANEL -->
-  <div id="dashboardPanel" class="dashboard-modal" style="display: none;">
-    <div class="dashboard-card">
-      <div class="dashboard-header">
-        <i class="fas fa-user-circle fa-3x" style="color:#3b5bbb;"></i>
-        <h3 id="dashboardUsername">Guest</h3>
-        <button id="closeDashboardBtn" class="close-dash"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="dashboard-stats">
-        <p><i class="fas fa-heart" style="color:#e53e3e;"></i> <span id="favCountDashboard">0</span> favorite hospitals</p>
-        <p><i class="fas fa-bell"></i> Promo alerts: enabled</p>
-        <p style="font-size:12px; margin-top:8px;"><i class="fas fa-info-circle"></i> No bookings, just info</p>
-      </div>
-      <button id="logoutDashboardBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+  <!-- Favorites Section -->
+  <div id="favoriteSection" class="favorite-section" style="display: none;">
+    <div class="section-header">
+      <h2><i class="fas fa-heart" style="color:#3b5bbb;"></i> Your saved hospitals & offers</h2>
+      <p>Personalized watchlist – track promos you love</p>
     </div>
+    <div class="fav-grid" id="favGrid"></div>
   </div>
+</div>
 
-  <!-- AUTH MODAL -->
-  <div id="authModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <div class="auth-tabs">
-        <button class="tab-btn active" id="loginTabBtn">Login</button>
-        <button class="tab-btn" id="registerTabBtn">Register</button>
-      </div>
-      <form id="loginForm" class="auth-form">
-        <h3>Welcome back</h3>
-        <input type="text" id="loginUsername" placeholder="Username" autocomplete="off">
-        <input type="password" id="loginPassword" placeholder="Password">
-        <button type="submit">Login <i class="fas fa-arrow-right"></i></button>
-        <small class="demo-hint">Demo: any username/password (≥3 chars) auto-creates account.</small>
-      </form>
-      <form id="registerForm" class="auth-form" style="display: none;">
-        <h3>Create personal account</h3>
-        <input type="text" id="regUsername" placeholder="Username">
-        <input type="password" id="regPassword" placeholder="Password">
-        <button type="submit">Register & Login</button>
-      </form>
+<!-- Back to Top -->
+<button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Dashboard Panel -->
+<div id="dashboardPanel" class="dashboard-modal" style="display: none;">
+  <div class="dashboard-card">
+    <div class="dashboard-header">
+      <i class="fas fa-user-circle fa-3x" style="color:#3b5bbb;"></i>
+      <h3 id="dashboardUsername">Guest</h3>
+      <button id="closeDashboardBtn" class="close-dash"><i class="fas fa-times"></i></button>
     </div>
+    <div class="dashboard-stats">
+      <p><i class="fas fa-heart" style="color:#3b5bbb;"></i> <span id="favCountDashboard">0</span> favorite hospitals</p>
+      <p><i class="fas fa-bell"></i> Promo alerts enabled</p>
+      <p><i class="fas fa-hourglass-half"></i> Countdown active</p>
+    </div>
+    <button id="logoutDashboardBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
   </div>
+</div>
 
-  <script src="script.js"></script>
+<!-- Auth Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="auth-tabs">
+      <button class="tab-btn active" id="loginTabBtn">Login</button>
+      <button class="tab-btn" id="registerTabBtn">Register</button>
+    </div>
+    <form id="loginForm" class="auth-form">
+      <h3>Welcome back</h3>
+      <input type="text" id="loginUsername" placeholder="Username">
+      <input type="password" id="loginPassword" placeholder="Password">
+      <button type="submit">Login <i class="fas fa-arrow-right"></i></button>
+      <small class="demo-hint">Demo: any username/password (min 3 chars) auto-creates account.</small>
+    </form>
+    <form id="registerForm" class="auth-form" style="display: none;">
+      <h3>Create personal account</h3>
+      <input type="text" id="regUsername" placeholder="Username">
+      <input type="password" id="regPassword" placeholder="Password">
+      <button type="submit">Register & Login</button>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
