@@ -1,11 +1,66 @@
-// script.js - carousel auto-slide every 3 seconds, no featured deal logic
+// script.js - with doctors, specialties, availability
 const hospitalsData = [
-  { id: 1, name: "City Central Hospital", location: "Downtown", beds: 42, totalBeds: 120, promo: "20% OFF full body checkup + Free dental screening", originalPrice: "$199", salePrice: "$159", image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600&h=400&fit=crop", scarcity: 85, featured: true, promoType: "discount" },
-  { id: 2, name: "MedLife Super Specialty", location: "Westside", beds: 18, totalBeds: 85, promo: "Free teleconsultation + 15% off maternity", originalPrice: "$299", salePrice: "$254", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop", scarcity: 65, featured: false, promoType: "discount" },
-  { id: 3, name: "St. Claire's Memorial", location: "Northridge", beds: 8, totalBeds: 60, promo: "Buy 1 Health Package, Get 1 Dental Checkup Free", originalPrice: "$149", salePrice: "$149 (BOGO)", image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=600&h=400&fit=crop", scarcity: 30, featured: false, promoType: "bogo" },
-  { id: 4, name: "Grace Medical Center", location: "Eastbrook", beds: 55, totalBeds: 140, promo: "Weekend discounts 30% on OPD", originalPrice: "$120", salePrice: "$84", image: "https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=600&h=400&fit=crop", scarcity: 92, featured: false, promoType: "discount" },
-  { id: 5, name: "Hope Children's & Women's", location: "South Park", beds: 12, totalBeds: 50, promo: "Zero registration fee & 25% off pediatric care", originalPrice: "$99", salePrice: "$74", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop", scarcity: 45, featured: false, promoType: "free" },
-  { id: 6, name: "Greenlife Heart Institute", location: "Riverside", beds: 27, totalBeds: 95, promo: "Cardiac package: 15% off + free ECG", originalPrice: "$350", salePrice: "$297", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop", scarcity: 55, featured: false, promoType: "discount" }
+  { 
+    id: 1, name: "City Central Hospital", location: "Downtown", beds: 42, totalBeds: 120, 
+    promo: "20% OFF full body checkup + Free dental screening", originalPrice: "$199", salePrice: "$159", 
+    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600&h=400&fit=crop", 
+    scarcity: 85, featured: false, promoType: "discount",
+    doctors: [
+      { name: "Dr. Emily Chen", specialty: "Cardiology", availability: "Mon, Wed, Fri 9AM-4PM" },
+      { name: "Dr. Michael Reyes", specialty: "Pediatrics", availability: "Tue, Thu 10AM-6PM" },
+      { name: "Dr. Sarah Johnson", specialty: "General Medicine", availability: "Mon-Fri 8AM-2PM" }
+    ]
+  },
+  { 
+    id: 2, name: "MedLife Super Specialty", location: "Westside", beds: 18, totalBeds: 85, 
+    promo: "Free teleconsultation + 15% off maternity", originalPrice: "$299", salePrice: "$254", 
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop", 
+    scarcity: 65, featured: false, promoType: "discount",
+    doctors: [
+      { name: "Dr. Anita Verma", specialty: "Obstetrics & Gynecology", availability: "Mon-Sat 9AM-5PM" },
+      { name: "Dr. Raj Patel", specialty: "Orthopedics", availability: "Wed, Fri 11AM-7PM" }
+    ]
+  },
+  { 
+    id: 3, name: "St. Claire's Memorial", location: "Northridge", beds: 8, totalBeds: 60, 
+    promo: "Buy 1 Health Package, Get 1 Dental Checkup Free", originalPrice: "$149", salePrice: "$149 (BOGO)", 
+    image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=600&h=400&fit=crop", 
+    scarcity: 30, featured: false, promoType: "bogo",
+    doctors: [
+      { name: "Dr. James O'Connor", specialty: "Dentistry", availability: "Mon-Thu 8AM-4PM" },
+      { name: "Dr. Lisa Wong", specialty: "Dermatology", availability: "Fri, Sat 10AM-3PM" }
+    ]
+  },
+  { 
+    id: 4, name: "Grace Medical Center", location: "Eastbrook", beds: 55, totalBeds: 140, 
+    promo: "Weekend discounts 30% on OPD", originalPrice: "$120", salePrice: "$84", 
+    image: "https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=600&h=400&fit=crop", 
+    scarcity: 92, featured: false, promoType: "discount",
+    doctors: [
+      { name: "Dr. David Kim", specialty: "Neurology", availability: "Mon, Wed 1PM-6PM" },
+      { name: "Dr. Maria Gonzales", specialty: "Family Medicine", availability: "Tue, Thu, Sat 9AM-1PM" }
+    ]
+  },
+  { 
+    id: 5, name: "Hope Children's & Women's", location: "South Park", beds: 12, totalBeds: 50, 
+    promo: "Zero registration fee & 25% off pediatric care", originalPrice: "$99", salePrice: "$74", 
+    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop", 
+    scarcity: 45, featured: false, promoType: "free",
+    doctors: [
+      { name: "Dr. Laura Bennett", specialty: "Pediatrics", availability: "Mon-Fri 9AM-5PM" },
+      { name: "Dr. Samuel Lee", specialty: "Neonatology", availability: "Wed, Thu 10AM-2PM" }
+    ]
+  },
+  { 
+    id: 6, name: "Greenlife Heart Institute", location: "Riverside", beds: 27, totalBeds: 95, 
+    promo: "Cardiac package: 15% off + free ECG", originalPrice: "$350", salePrice: "$297", 
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop", 
+    scarcity: 55, featured: false, promoType: "discount",
+    doctors: [
+      { name: "Dr. Robert Hayes", specialty: "Cardiothoracic Surgery", availability: "Mon, Wed, Fri 8AM-12PM" },
+      { name: "Dr. Priya Sharma", specialty: "Interventional Cardiology", availability: "Tue, Thu 1PM-6PM" }
+    ]
+  }
 ];
 
 function getBedStatus(beds, total) {
@@ -19,7 +74,7 @@ let currentUser = null;
 let currentFilter = "all";
 let currentSearch = "";
 
-// Auth functions
+// Auth functions (same as before)
 function loadSession() { const saved = localStorage.getItem("carematch_user"); currentUser = saved ? JSON.parse(saved) : null; updateAuthUI(); }
 function saveSession() { if (currentUser) localStorage.setItem("carematch_user", JSON.stringify(currentUser)); else localStorage.removeItem("carematch_user"); }
 function registerUser(u, p) { if (u.length < 2 || p.length < 2) return false; const users = JSON.parse(localStorage.getItem("carematch_users") || "{}"); if (users[u]) return false; users[u] = { password: p, favorites: [] }; localStorage.setItem("carematch_users", JSON.stringify(users)); currentUser = { username: u, favorites: [] }; saveSession(); return true; }
@@ -45,6 +100,7 @@ function applyFilterAndSearch() {
   renderHospitals(filtered);
 }
 
+// Render hospitals with doctor info
 function renderHospitals(hospitalsArray = null) {
   const grid = document.getElementById("hospitalGrid");
   if (!grid) return;
@@ -57,12 +113,30 @@ function renderHospitals(hospitalsArray = null) {
     if (h.originalPrice && h.salePrice && h.salePrice !== h.originalPrice) {
       priceHtml = `<div class="price-cross">${h.originalPrice}</div> <span class="sale-price">${h.salePrice}</span>`;
     }
+    // Build doctors HTML
+    let doctorsHtml = '';
+    if (h.doctors && h.doctors.length > 0) {
+      doctorsHtml = `
+        <div class="doctors-section">
+          <div class="doctors-title"><i class="fas fa-user-md"></i> Our Doctors</div>
+          <div class="doctor-list">
+            ${h.doctors.map(doc => `
+              <div class="doctor-item">
+                <div class="doctor-name"><i class="fas fa-stethoscope"></i> ${doc.name}</div>
+                <div class="doctor-specialty"><i class="fas fa-brain"></i> ${doc.specialty}</div>
+                <div class="doctor-availability"><i class="fas fa-clock"></i> ${doc.availability}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
     return `
       <div class="hospital-card">
         <img src="${h.image}" alt="${h.name}" class="card-img" loading="lazy">
         <div class="card-content">
           <div class="hospital-name">
-            ${h.name} ${h.featured ? '<span style="background:#f97316; color:white; font-size:12px; padding:2px 10px; border-radius:20px;">⭐ FEATURED</span>' : ''}
+            ${h.name}
             <i class="fas fa-heart fav-icon ${favActive ? 'active' : ''}" data-id="${h.id}"></i>
           </div>
           <div class="location"><i class="fas fa-map-marker-alt"></i> ${h.location}</div>
@@ -73,8 +147,9 @@ function renderHospitals(hospitalsArray = null) {
             ${priceHtml ? `<div style="margin-left: auto;">${priceHtml}</div>` : ''}
           </div>
           <div class="small-progress"><div class="small-progress-fill" style="width: ${h.scarcity}%;"></div></div>
-          <div class="call-note"><i class="fas fa-phone-alt"></i> No online booking – call hospital to confirm</div>
+          ${doctorsHtml}
         </div>
+        <div class="call-note"><i class="fas fa-phone-alt"></i> No online booking – call hospital to confirm</div>
       </div>
     `;
   }).join("");
@@ -97,6 +172,17 @@ function renderFavorites() {
   if (section) section.style.display = "block";
   favGrid.innerHTML = favHospitals.map(h => {
     const bed = getBedStatus(h.beds, h.totalBeds);
+    let doctorsHtml = '';
+    if (h.doctors && h.doctors.length > 0) {
+      doctorsHtml = `
+        <div class="doctors-section">
+          <div class="doctors-title"><i class="fas fa-user-md"></i> Doctors</div>
+          <div class="doctor-list">
+            ${h.doctors.map(doc => `<div class="doctor-item"><strong>${doc.name}</strong> - ${doc.specialty}<br><small>${doc.availability}</small></div>`).join('')}
+          </div>
+        </div>
+      `;
+    }
     return `
       <div class="hospital-card fav-card">
         <img src="${h.image}" alt="${h.name}" class="card-img" loading="lazy">
@@ -105,7 +191,8 @@ function renderFavorites() {
           <div class="location"><i class="fas fa-map-marker-alt"></i> ${h.location}</div>
           <div class="bed-status"><span class="${bed.class}">${bed.text}</span></div>
           <div class="promo-tag"><span class="promo-badge-label">PROMO</span> 🎯 ${h.promo}</div>
-          <button class="remove-fav-btn" data-id="${h.id}" style="margin-top:12px; background:#fee2e2; border:none; padding:6px 12px; border-radius:40px; cursor:pointer;">Remove</button>
+          ${doctorsHtml}
+          <button class="remove-fav-btn" data-id="${h.id}">Remove</button>
         </div>
       </div>
     `;
@@ -128,22 +215,25 @@ function updateAuthUI() {
 function updateDashboardFavCount() { const span = document.getElementById("favCountDashboard"); if (span && currentUser) span.innerText = currentUser.favorites.length; else if (span) span.innerText = "0"; }
 function toggleFavoriteSection() { const sec = document.getElementById("favoriteSection"); if (sec && currentUser && currentUser.favorites.length > 0) sec.style.display = "block"; else if (sec) sec.style.display = "none"; }
 
+// All Promos section
 function renderAllPromos() {
   const promosGrid = document.getElementById("promosGrid");
   if (!promosGrid) return;
   promosGrid.innerHTML = hospitalsData.map(h => `
     <div class="promo-card">
-      <div class="promo-icon"><i class="fas fa-tag"></i></div>
-      <h4>${h.name}</h4>
-      <p>${h.promo}</p>
-      <button class="claim-promo-card" data-offer="${h.promo.replace(/"/g, '&quot;')}">Claim Offer →</button>
+      <img src="${h.image}" alt="${h.name}" class="promo-card-image" loading="lazy">
+      <div class="promo-card-content">
+        <h4>${h.name}</h4>
+        <p>${h.promo}</p>
+        <button class="claim-promo-card" data-offer="${h.promo.replace(/"/g, '&quot;')}">Claim Offer →</button>
+      </div>
     </div>
   `).join("");
   document.querySelectorAll('.claim-promo-card').forEach(btn => { btn.removeEventListener('click', promoCardHandler); btn.addEventListener('click', promoCardHandler); });
 }
 function promoCardHandler(e) { const offer = e.currentTarget.getAttribute('data-offer'); alert(`📞 To claim "${offer}", please call the hospital directly. No online booking.`); }
 
-// ========== CAROUSEL LOGIC (3 seconds interval) ==========
+// Carousel (3 seconds)
 let currentIndex = 0;
 let carouselInterval;
 const track = document.getElementById('carouselTrack');
@@ -154,18 +244,11 @@ let slideCount = slides.length;
 function updateCarousel() {
   if (!track) return;
   track.style.transform = `translateX(-${currentIndex * 100}%)`;
-  document.querySelectorAll('.dot').forEach((dot, i) => {
-    dot.classList.toggle('active', i === currentIndex);
-  });
+  document.querySelectorAll('.dot').forEach((dot, i) => { dot.classList.toggle('active', i === currentIndex); });
 }
-
 function nextSlide() { if (slideCount > 0) currentIndex = (currentIndex + 1) % slideCount; updateCarousel(); }
 function prevSlide() { if (slideCount > 0) currentIndex = (currentIndex - 1 + slideCount) % slideCount; updateCarousel(); }
-
-function startCarouselAuto() {
-  if (carouselInterval) clearInterval(carouselInterval);
-  carouselInterval = setInterval(nextSlide, 3000); // 3 seconds
-}
+function startCarouselAuto() { if (carouselInterval) clearInterval(carouselInterval); carouselInterval = setInterval(nextSlide, 3000); }
 function stopCarouselAuto() { if (carouselInterval) clearInterval(carouselInterval); }
 
 function initCarousel() {
@@ -199,21 +282,7 @@ function initCarousel() {
   });
 }
 
-// Mid-scroll insert
-let midScrollObserver = null;
-function checkMidScrollInsert() {
-  const grid = document.getElementById("hospitalGrid");
-  const insertDiv = document.getElementById("midScrollPromo");
-  if (!grid || !insertDiv || insertDiv.style.display === 'block') return;
-  if (midScrollObserver) midScrollObserver.disconnect();
-  midScrollObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting && insertDiv.style.display !== 'block') { insertDiv.style.display = 'block'; midScrollObserver.disconnect(); } });
-  }, { threshold: 0.3 });
-  const thirdCard = grid.children[2];
-  if (thirdCard) midScrollObserver.observe(thirdCard);
-}
-
-// Countdown
+// Countdown timer
 function startCountdown() {
   const target = new Date(2026, 3, 30, 23, 59, 59).getTime();
   setInterval(() => {
@@ -248,7 +317,7 @@ function initBackToTop() {
   btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 }
 
-// Hamburger
+// Hamburger menu
 function initHamburger() {
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("navLinks");
@@ -258,7 +327,7 @@ function initHamburger() {
   });
 }
 
-// Modal handlers
+// Modal
 const modal = document.getElementById("authModal");
 function openAuthModal() { if (modal) modal.style.display = "flex"; }
 function closeAuthModal() { if (modal) modal.style.display = "none"; }
@@ -272,7 +341,6 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFilterAndSearch();
     renderFavorites();
     renderAllPromos();
-    checkMidScrollInsert();
   }, 100);
   startCountdown();
   initCarousel();
@@ -280,10 +348,19 @@ document.addEventListener("DOMContentLoaded", () => {
   initHamburger();
   
   document.getElementById("closeBanner")?.addEventListener("click", closeStickyBanner);
-  const navPromos = document.getElementById("navPromos");
+  const allPromosLink = document.getElementById("navAllPromos");
   const allPromosSec = document.getElementById("allPromosSection");
-  if (navPromos && allPromosSec) {
-    navPromos.addEventListener("click", (e) => { e.preventDefault(); if (allPromosSec.style.display === "none" || !allPromosSec.style.display) { allPromosSec.style.display = "block"; allPromosSec.scrollIntoView({ behavior: "smooth" }); } else { allPromosSec.style.display = "none"; } });
+  if (allPromosLink && allPromosSec) {
+    allPromosLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (allPromosSec.style.display === "none" || !allPromosSec.style.display) {
+        allPromosSec.style.display = "block";
+        allPromosSec.scrollIntoView({ behavior: "smooth" });
+        renderAllPromos();
+      } else {
+        allPromosSec.style.display = "none";
+      }
+    });
   }
   document.getElementById("authNavBtn")?.addEventListener("click", (e) => { e.preventDefault(); openAuthModal(); });
   document.getElementById("accountDashboardBtn")?.addEventListener("click", (e) => { e.preventDefault(); openDashboard(); });
@@ -300,10 +377,9 @@ document.addEventListener("DOMContentLoaded", () => {
     loginTab.addEventListener("click", () => { loginTab.classList.add("active"); regTab.classList.remove("active"); loginForm.style.display = "block"; regForm.style.display = "none"; });
     regTab.addEventListener("click", () => { regTab.classList.add("active"); loginTab.classList.remove("active"); loginForm.style.display = "none"; regForm.style.display = "block"; });
   }
-  document.getElementById("loginForm")?.addEventListener("submit", (e) => { e.preventDefault(); const u = document.getElementById("loginUsername").value.trim(); const p = document.getElementById("loginPassword").value.trim(); if (loginUser(u, p)) { closeAuthModal(); applyFilterAndSearch(); renderFavorites(); updateAuthUI(); } else alert("Login failed"); });
-  document.getElementById("registerForm")?.addEventListener("submit", (e) => { e.preventDefault(); const u = document.getElementById("regUsername").value.trim(); const p = document.getElementById("regPassword").value.trim(); if (registerUser(u, p)) { closeAuthModal(); applyFilterAndSearch(); renderFavorites(); updateAuthUI(); } else alert("Username exists or invalid"); });
-  document.getElementById("scrollToHospitals")?.addEventListener("click", () => { document.querySelector(".hospital-grid")?.scrollIntoView({ behavior: "smooth" }); });
-  document.getElementById("navAbout")?.addEventListener("click", (e) => { e.preventDefault(); alert("CareMatch helps you discover hospital promotions and bed availability. No online bookings – call hospitals directly."); });
+  document.getElementById("loginForm")?.addEventListener("submit", (e) => { e.preventDefault(); const u = document.getElementById("loginUsername").value.trim(); const p = document.getElementById("loginPassword").value.trim(); if (loginUser(u, p)) { closeAuthModal(); applyFilterAndSearch(); renderFavorites(); renderAllPromos(); updateAuthUI(); } else alert("Login failed"); });
+  document.getElementById("registerForm")?.addEventListener("submit", (e) => { e.preventDefault(); const u = document.getElementById("regUsername").value.trim(); const p = document.getElementById("regPassword").value.trim(); if (registerUser(u, p)) { closeAuthModal(); applyFilterAndSearch(); renderFavorites(); renderAllPromos(); updateAuthUI(); } else alert("Username exists or invalid"); });
+  document.getElementById("navAbout")?.addEventListener("click", (e) => { e.preventDefault(); alert("CareMatch helps you discover hospital promotions, bed availability, and doctor information. No online bookings – call hospitals directly."); });
   document.getElementById("navContact")?.addEventListener("click", (e) => { e.preventDefault(); alert("📞 +1 (555) 789-2344 | promos@carematch.com\nInformational only – no bookings."); });
   
   const searchInput = document.getElementById("searchInput");
